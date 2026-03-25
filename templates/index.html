@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>LAN File Transfer</title>
+    <link rel="stylesheet" href="/static/css/style.css">
+</head>
+<body>
+    <div class="app">
+        <header class="header">
+            <h1>局域网文件传输</h1>
+            <div class="self-info" id="selfInfo">--</div>
+        </header>
+
+        <div class="main">
+            <!-- Left Panel: Device List -->
+            <aside class="sidebar">
+                <h2>在线设备</h2>
+                <div class="device-list" id="deviceList">
+                    <div class="empty-hint">正在搜索设备...</div>
+                </div>
+            </aside>
+
+            <!-- Right Panel: Transfer Area -->
+            <section class="content">
+                <!-- File Selection -->
+                <div class="panel file-select-panel">
+                    <h2>发送文件</h2>
+                    <div class="target-info" id="targetInfo">
+                        请先在左侧选择目标设备
+                    </div>
+                    <div class="file-actions">
+                        <button class="btn btn-primary" id="btnSelectFiles" disabled>选择文件</button>
+                        <button class="btn btn-primary" id="btnSelectFolder" disabled>选择文件夹</button>
+                        <button class="btn btn-send" id="btnSend" disabled>开始传输</button>
+                    </div>
+                    <div class="selected-files" id="selectedFiles"></div>
+
+                    <!-- File Browser Modal -->
+                    <div class="modal" id="fileBrowserModal">
+                        <div class="modal-content">
+                            <div class="modal-header">
+                                <h3 id="browserTitle">浏览文件</h3>
+                                <button class="btn-close" id="btnCloseBrowser">&times;</button>
+                            </div>
+                            <div class="browser-path">
+                                <button class="btn btn-small" id="btnParentDir">上级目录</button>
+                                <span id="currentPath">-</span>
+                            </div>
+                            <div class="browser-list" id="browserList"></div>
+                            <div class="modal-footer">
+                                <span id="browserSelected">已选: 0 项</span>
+                                <button class="btn btn-primary" id="btnConfirmSelect">确认选择</button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Drop Zone -->
+                <div class="drop-zone" id="dropZone">
+                    <p>拖拽文件到此处（仅支持使用文件浏览器选择）</p>
+                </div>
+
+                <!-- Transfer Log -->
+                <div class="panel transfer-panel">
+                    <h2>传输记录</h2>
+                    <div class="transfer-list" id="transferList">
+                        <div class="empty-hint">暂无传输记录</div>
+                    </div>
+                </div>
+            </section>
+        </div>
+    </div>
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/socket.io/4.7.4/socket.io.min.js"></script>
+    <script src="/static/js/main.js"></script>
+</body>
+</html>
