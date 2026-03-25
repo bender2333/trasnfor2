@@ -545,8 +545,8 @@
         fetchDevices();
         bindEvents();
 
-        // Periodically refresh device list
-        setInterval(fetchDevices, 5000);
+        // Periodically refresh device list (match broadcast interval)
+        setInterval(fetchDevices, 3000);
     }
 
     // Start

@@ -8,8 +8,8 @@ HOST = '0.0.0.0'
 # UDP discovery configuration
 UDP_PORT = 5354
 UDP_BROADCAST_ADDR = '255.255.255.255'
-BROADCAST_INTERVAL = 3  # seconds
-DEVICE_TIMEOUT = 10  # seconds without broadcast -> offline
+BROADCAST_INTERVAL = 2  # seconds between broadcasts (reduced for reliability)
+DEVICE_TIMEOUT = 15  # seconds without broadcast -> offline (allows ~7 missed broadcasts)
 
 # File transfer configuration
 CHUNK_SIZE = 1 * 1024 * 1024  # 1MB per chunk
